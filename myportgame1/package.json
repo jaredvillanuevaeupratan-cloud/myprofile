@@ -1,0 +1,29 @@
+{
+  "name": "better_32bikes_32_40multiplayer_32platformer_32arrow_32fight_41",
+  "main": "main.js",
+  "productName": "Better Bikes (Multiplayer platformer arrow fight)",
+  "description": "Better Bikes (Multiplayer platformer arrow fight)",
+  "author": "",
+  "version": "1.0.0",
+  "dependencies": {
+    
+    "@electron/remote": "^2.0.8"
+  },
+  "scripts": {
+    "start": "electron main.js",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "18.2.2",
+    "electron-builder": "22.11.11"
+  },
+  "build": {
+    "appId": "com.example.ArrowFight",
+    "extraFiles": [
+      "LICENSE.GDevelop.txt"
+    ],
+    "directories": {
+      "buildResources": "buildResources"
+    }
+  }
+}
