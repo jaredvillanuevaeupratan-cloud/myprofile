@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom & Glow Beauty Parlor</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: #2d2d2d; background: #faf8f5; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 70px 0; }
+        h1, h2, h3 { margin-bottom: 15px; }
+        h2 { text-align: center; font-size: 2.2rem; color: #1a1a1a; margin-bottom: 40px; position: relative; }
+        h2::after { content: ''; display: block; width: 50px; height: 3px; background: #c9a97d; margin: 10px auto 0; }
+        .btn { display: inline-block; padding: 13px 30px; background: #c9a97d; color: #fff; border-radius: 30px; font-weight: 600; transition: 0.3s; border: none; cursor: pointer; }
+        .btn:hover { background: #a8885d; transform: translateY(-2px); }
+
+        /* Hero */
+        .hero { background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://picsum.photos/seed/beautyhero/1400/800'); background-size: cover; background-position: center; height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; }
+        .hero h1 { font-size: 3.2rem; margin-bottom: 12px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+        .hero p { font-size: 1.25rem; margin-bottom: 28px; opacity: 0.95; }
+
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .service-card { background: #fff; padding: 28px 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); text-align: center; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .service-card h3 { color: #c9a97d; margin-bottom: 8px; }
+        .price { font-size: 1.6rem; font-weight: bold; margin: 10px 0; color: #1a1a1a; }
+
+        /* About */
+        #about { background: #fff; }
+        .about-text { max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.05rem; color: #555; }
+
+        /* Team */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; }
+        .team-card { text-align: center; }
+        .team-card img { width: 130px; height: 130px; border-radius: 50%; margin: 0 auto 15px; object-fit: cover; border: 4px solid #c9a97d; }
+        .team-card p { color: #666; margin-top: 4px; font-size: 0.95rem; }
+
+        /* Testimonials */
+        .testimonials { background: #f5f0ea; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .testimonial { background: #fff; padding: 25px; border-radius: 10px; font-style: italic; position: relative; box-shadow: 0 3px 10px rgba(0,0,0,0.04); }
+        .testimonial::before { content: '"'; font-size: 4.5rem; color: #c9a97d; position: absolute; top: -12px; left: 18px; opacity: 0.25; font-family: serif; }
+        .testimonial p { position: relative; z-index: 1; }
+        .testimonial strong { display: block; margin-top: 12px; font-style: normal; color: #333; }
+
+        /* Location & Contact */
+        .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .info-box p { margin-bottom: 10px; }
+        .map-placeholder { background: #e8e4de; height: 280px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #777; font-weight: 500; margin-top: 20px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 13px; margin-bottom: 15px; border: 1px solid #d5d0c8; border-radius: 8px; background: #faf8f5; }
+        .contact-form button { width: 100%; }
+
+        /* Footer */
+        footer { background: #1a1a1a; color: #bbb; text-align: center; padding: 22px 0; margin-top: 40px; font-size: 0.95rem; }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .hero h1 { font-size: 2.4rem; }
+            .split-section { grid-template-columns: 1fr; }
+            section { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Bloom & Glow Beauty Parlor</h1>
+            <p>Where elegance meets expertise. Book your glow-up today.</p>
+            <a href="#services" class="btn">View Services</a>
+        </div>
+    </section>
+
+    <!-- 2. PRICING / SERVICES -->
+    <section id="services">
+        <div class="container">
+            <h2>Services & Pricing</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Haircut & Styling</h3>
+                    <p class="price">$35</p>
+                    <p>Precision cuts, blowouts, and custom styling for all hair types.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Hair Coloring</h3>
+                    <p class="price">$85+</p>
+                    <p>Balayage, highlights, full color, and seamless root touch-ups.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Facial & Skincare</h3>
+                    <p class="price">$55</p>
+                    <p>Deep cleansing, hydration, and anti-aging treatments.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Manicure & Pedicure</h3>
+                    <p class="price">$45</p>
+                    <p>Gel polish, nail art, and relaxing foot massage add-ons.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ABOUT US -->
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p class="about-text">Founded in 2018, Bloom & Glow was created to be a sanctuary for self-care. Our licensed professionals combine modern techniques with premium, eco-friendly products to deliver results that make you feel confident and radiant. We believe beauty is personal, and every visit is tailored just for you.</p>
+        </div>
+    </section>
+
+    <!-- 4. OUR TEAM -->
+    <section id="team">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card"><img src="https://picsum.photos/seed/team1/300/300" alt="Sarah"><h3>Sarah Lin</h3><p>Lead Hairstylist & Colorist</p></div>
+                <div class="team-card"><img src="https://picsum.photos/seed/team2/300/300" alt="Mia"><h3>Mia Rodriguez</h3><p>Skincare Specialist</p></div>
+                <div class="team-card"><img src="https://picsum.photos/seed/team3/300/300" alt="Elena"><h3>Elena Chen</h3><p>Nail Technician & Artist</p></div>
+                <div class="team-card"><img src="https://picsum.photos/seed/team4/300/300" alt="Jasmine"><h3>Jasmine Carter</h3><p>Makeup & Bridal Expert</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TESTIMONIALS -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Client Love</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial"><p>"Absolutely transformed my look! The balayage was exactly what I wanted, and the atmosphere is so relaxing."</p><strong>— Alicia M.</strong></div>
+                <div class="testimonial"><p>"Best facial I've ever had. My skin has never looked this glowing. Highly recommend the hydrating package!"</p><strong>— David T.</strong></div>
+                <div class="testimonial"><p>"Professional, clean, and incredibly friendly. I've been coming here for 2 years and will never switch."</p><strong>— Rachel K.</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. LOCATION + CONTACT -->
+    <section id="location-contact">
+        <div class="container">
+            <div class="split-section">
+                <div class="info-box">
+                    <h2>Visit Us</h2>
+                    <p><strong>Address:</strong> 142 Blossom Ave, Suite 3<br>Maplewood, CA 90210</p>
+                    <p><strong>Hours:</strong> Mon-Sat: 9AM - 7PM | Sun: 10AM - 5PM</p>
+                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Email:</strong> hello@bloomandglow.com</p>
+                    <div class="map-placeholder">🗺️ [Google Map Embed Placeholder]</div>
+                </div>
+                <div>
+                    <h2>Contact Us</h2>
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will reply shortly. (Demo only)');">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea rows="5" placeholder="How can we help you?" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Bloom & Glow Beauty Parlor. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
