@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights Bakery - Fresh Baked Goods Daily</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Color Scheme:
+           Primary: #8B4513 (Saddle Brown)
+           Secondary: #D2691E (Chocolate)
+           Accent: #F4A460 (Sandy Brown)
+           Background: #FFF8DC (Cornsilk)
+           Light: #FAEBD7 (Antique White)
+        */
+
+        /* Navigation */
+        nav {
+            background: #8B4513;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #FFF8DC;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #F4A460;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            background: linear-gradient(rgba(139, 69, 19, 0.6), rgba(139, 69, 19, 0.6)),
+                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #D2691E;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #8B4513;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #8B4513;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #D2691E;
+            margin: 10px auto;
+        }
+
+        /* About Us */
+        .about {
+            background: #FFF8DC;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .about-text h3 {
+            color: #8B4513;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Services/Pricing */
+        .services {
+            background: white;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #FFF8DC;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-info {
+            padding: 20px;
+        }
+
+        .service-info h3 {
+            color: #8B4513;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .price {
+            color: #D2691E;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Our Team */
+        .team {
+            background: #FAEBD7;
+        }
+
+        .team-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 20px;
+        }
+
+        .team-info h3 {
+            color: #8B4513;
+            margin-bottom: 5px;
+        }
+
+        .team-info p {
+            color: #D2691E;
+            font-weight: 500;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #FFF8DC;
+        }
+
+        .testimonial-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: #D2691E;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #8B4513;
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        /* Location */
+        .location {
+            background: white;
+        }
+
+        .location-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .location-info {
+            padding: 20px;
+        }
+
+        .location-info h3 {
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .location-detail {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .location-detail strong {
+            color: #D2691E;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .map {
+            background: #FAEBD7;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            font-size: 1.2rem;
+            color: #8B4513;
+        }
+
+        /* Contact */
+        .contact {
+            background: #8B4513;
+            color: white;
+        }
+
+        .contact .section-title {
+            color: #FFF8DC;
+        }
+
+        .contact .section-title::after {
+            background: #F4A460;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #8B4513;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #FAEBD7;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #D2691E;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #D2691E;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #8B4513;
+        }
+
+        /* Footer */
+        footer {
+            background: #3E2723;
+            color: #FFF8DC;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: #F4A460;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Menu & Prices</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Sweet Delights Bakery</h1>
+            <p>Baked with Love, Made with Passion</p>
+            <a href="#services" class="btn">View Our Menu</a>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600" alt="Baker at work" class="about-img">
+            <div class="about-text">
+                <h3>Baking Memories Since 2010</h3>
+                <p>Welcome to Sweet Delights Bakery, where every bite tells a story of tradition, quality, and love. Founded by master baker Maria Santos, our bakery has been serving the community with freshly baked goods for over 13 years.</p>
+                <p>We use only the finest ingredients, sourced from local farms and trusted suppliers. From our signature sourdough bread to our decadent pastries, every item is handcrafted daily using time-honored techniques passed down through generations.</p>
+                <p>Whether you're looking for a quick breakfast treat, a custom wedding cake, or catering for your special event, we're here to make your day sweeter!</p>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services/Pricing -->
+    <section class="services" id="services">
+        <h2 class="section-title">Our Menu & Pricing</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1585476263060-b7a69710b5b4?w=400" alt="Artisan Bread">
+                <div class="service-info">
+                    <h3>Artisan Breads</h3>
+                    <p>Freshly baked sourdough, baguettes, whole wheat, and specialty breads</p>
+                    <div class="price">$4.50 - $8.00</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=400" alt="Cupcakes">
+                <div class="service-info">
+                    <h3>Gourmet Cupcakes</h3>
+                    <p>Dozen flavors including red velvet, chocolate fudge, and vanilla bean</p>
+                    <div class="price">$3.50 each / $36/dozen</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400" alt="Croissants">
+                <div class="service-info">
+                    <h3>French Pastries</h3>
+                    <p>Buttery croissants, pain au chocolat, danishes, and éclairs</p>
+                    <div class="price">$3.00 - $5.50</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" alt="Custom Cakes">
+                <div class="service-info">
+                    <h3>Custom Cakes</h3>
+                    <p>Birthday, wedding, and special occasion cakes made to order</p>
+                    <div class="price">Starting at $45</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=400" alt="Cookies">
+                <div class="service-info">
+                    <h3>Fresh Cookies</h3>
+                    <p>Chocolate chip, oatmeal raisin, sugar cookies, and seasonal specials</p>
+                    <div class="price">$2.50 each / $24/dozen</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400" alt="Catering">
+                <div class="service-info">
+                    <h3>Catering Services</h3>
+                    <p>Full catering for events, corporate meetings, and parties</p>
+                    <div class="price">Custom Quotes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="team" id="team">
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400" alt="Maria Santos">
+                <div class="team-info">
+                    <h3>Maria Santos</h3>
+                    <p>Founder & Head Baker</p>
+                    <p style="margin-top: 10px; font-size: 0.95rem;">20+ years of baking expertise, trained in Paris</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce395760277e?w=400" alt="James Chen">
+                <div class="team-info">
+                    <h3>James Chen</h3>
+                    <p>Pastry Chef</p>
+                    <p style="margin-top: 10px; font-size: 0.95rem;">Specialist in French pastries and custom cakes</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1583394294087-2740d70898d4?w=400" alt="Sarah Johnson">
+                <div class="team-info">
+                    <h3>Sarah Johnson</h3>
+                    <p>Bakery Manager</p>
+                    <p style="margin-top: 10px; font-size: 0.95rem;">Ensuring quality and customer satisfaction</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1600565194354-16f34f5f4f38?w=400" alt="Carlos Rodriguez">
+                <div class="team-info">
+                    <h3>Carlos Rodriguez</h3>
+                    <p>Head Baker</p>
+                    <p style="margin-top: 10px; font-size: 0.95rem;">Master of artisan breads and sourdough</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>The best sourdough bread I've ever tasted! It reminds me of my grandmother's baking. The staff is incredibly friendly and the atmosphere is warm and welcoming. I come here every Saturday morning!</p>
+                <div class="testimonial-author">- Emily Richardson</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>We ordered a custom wedding cake from Sweet Delights and it exceeded all our expectations! Not only was it absolutely beautiful, but it tasted incredible. Our guests are still talking about it!</p>
+                <div class="testimonial-author">- Michael & Jennifer Torres</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>As someone with celiac disease, finding good gluten-free pastries is challenging. Sweet Delights has the most amazing gluten-free options that actually taste fresh and delicious!</p>
+                <div class="testimonial-author">- Amanda Foster</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>I've been catering my corporate events with Sweet Delights for 3 years now. Their professionalism, quality, and variety are unmatched. Highly recommend their breakfast platters!</p>
+                <div class="testimonial-author">- Robert Chang, CEO TechStart Inc.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>The cupcakes are to die for! My daughter's birthday party was a huge success thanks to their amazing custom cupcakes. The red velvet is our family favorite!</p>
+                <div class="testimonial-author">- Lisa Martinez</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>Finally, a bakery that understands authentic French pastries! The croissants are buttery, flaky, and absolutely perfect with my morning coffee. C'est magnifique!</p>
+                <div class="testimonial-author">- Pierre Dubois</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location" id="location">
+        <h2 class="section-title">Visit Us</h2>
+        <div class="location-content">
+            <div class="location-info">
+                <h3>Store Information</h3>
+                
+                <div class="location-detail">
+                    <div>
+                        <strong>Address:</strong>
+                        456 Baker Street, Suite 100<br>
+                        San Francisco, CA 94102
+                    </div>
+                </div>
+
+                <div class="location-detail">
+                    <div>
+                        <strong>Business Hours:</strong><br>
+                        Monday - Friday: 6:00 AM - 7:00 PM<br>
+                        Saturday: 7:00 AM - 8:00 PM<br>
+                        Sunday: 7:00 AM - 6:00 PM
+                    </div>
+                </div>
+
+                <div class="location-detail">
+                    <div>
+                        <strong>Phone:</strong><br>
+                        (415) 555-BAKE (2253)
+                    </div>
+                </div>
+
+                <div class="location-detail">
+                    <div>
+                        <strong>Email:</strong><br>
+                        hello@sweetdelightsbakery.com
+                    </div>
+                </div>
+
+                <div class="location-detail">
+                    <div>
+                        <strong>Parking:</strong><br>
+                        Street parking available<br>
+                        Public garage 2 blocks away
+                    </div>
+                </div>
+            </div>
+
+            <div class="map">
+                <div style="text-align: center;">
+                    <p style="font-size: 3rem; margin-bottom: 10px;">📍</p>
+                    <p>Interactive Map Would Go Here</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">(Google Maps Integration)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-content">
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Sweet Delights Bakery. All rights reserved.</p>
+        <p>Baked with ❤️ in San Francisco</p>
+        <div class="social-links">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            this.reset();
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(139, 69, 19, 0.95)';
+            } else {
+                nav.style.background = '#8B4513';
+            }
+        });
+    </script>
+
+</body>
+</html>
