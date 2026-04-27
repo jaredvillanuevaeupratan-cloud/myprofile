@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Crumb Bake Shop</title>
+    <style>
+        /* --- Color Scheme & Variables --- */
+        :root {
+            --primary-color: #d4a373; /* Warm Bread Crust */
+            --secondary-color: #faedcd; /* Cream/Dough */
+            --accent-color: #e56b6f; /* Berry/Jam Red */
+            --text-dark: #4a3b32; /* Dark Chocolate */
+            --text-light: #ffffff;
+            --bg-light: #fefae0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/d4a373/ffffff?text=Fresh+Bakery+Background');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #c54e52;
+        }
+
+        /* --- General Section Styles --- */
+        section {
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        /* --- About Us --- */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- Pricing / Services --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* --- Our Team --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid var(--primary-color);
+        }
+
+        .role {
+            color: var(--primary-color);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Testimonials --- */
+        .testimonials {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .testimonials .section-title {
+            color: var(--text-light);
+        }
+        
+        .testimonials .section-title::after {
+            background-color: var(--text-light);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        .customer-name {
+            display: block;
+            margin-top: 1rem;
+            font-weight: bold;
+            font-style: normal;
+            text-align: right;
+        }
+
+        /* --- Location --- */
+        .location-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .map-placeholder {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .map-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .address-box {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        /* --- Contact Us --- */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simplified for mobile demo */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Sweet Crumb 🥐</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#team">Team</a>
+            <a href="#location">Location</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="hero">
+        <h1>Baked with Love, Served with Joy</h1>
+        <p>Experience the finest artisanal breads, pastries, and cakes in town. Freshly baked every single morning.</p>
+        <a href="#menu" class="btn">View Our Menu</a>
+    </header>
+
+    <!-- 6. About Us Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://placehold.co/600x400/faedcd/d4a373?text=Our+Cozy+Shop" alt="Bakery Interior">
+            </div>
+            <div class="about-text">
+                <h3>A Tradition of Taste</h3>
+                <p>Founded in 2015, Sweet Crumb started as a small family kitchen experiment. Today, we are proud to serve our community with organic ingredients and time-honored recipes.</p>
+                <br>
+                <p>We believe that bread is the heart of every home. That's why we never use preservatives—just flour, water, yeast, salt, and a whole lot of passion.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Pricing / Services (Menu) -->
+    <section id="menu">
+        <h2 class="section-title">Our Favorites</h2>
+        <div class="services-grid">
+            <!-- Item 1 -->
+            <div class="service-card">
+                <img src="https://placehold.co/400x300/e56b6f/ffffff?text=Sourdough+Loaf" alt="Sourdough">
+                <h3>Classic Sourdough</h3>
+                <p>Crispy crust with a soft, airy interior. Fermented for 48 hours.</p>
+                <div class="price">$6.50</div>
+            </div>
+            <!-- Item 2 -->
+            <div class="service-card">
+                <img src="https://placehold.co/400x300/d4a373/ffffff?text=Chocolate+Croissant" alt="Croissant">
+                <h3>Choco Croissant</h3>
+                <p>Buttery, flaky layers filled with premium Belgian chocolate.</p>
+                <div class="price">$4.00</div>
+            </div>
+            <!-- Item 3 -->
+            <div class="service-card">
+                <img src="https://placehold.co/400x300/fefae0/4a3b32?text=Custom+Cake" alt="Cake">
+                <h3>Custom Celebration Cake</h3>
+                <p>Designed for your special day. Vanilla, Chocolate, or Red Velvet.</p>
+                <div class="price">From $45.00</div>
+            </div>
+            <!-- Item 4 -->
+            <div class="service-card">
+                <img src="https://placehold.co/400x300/4a3b32/ffffff?text=Coffee+Bundle" alt="Coffee">
+                <h3>Morning Bundle</h3>
+                <p>Any pastry + Large Coffee. The perfect start to your day.</p>
+                <div class="price">$7.50</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Our Team -->
+    <section id="team" style="background-color: #fff;">
+        <h2 class="section-title">Meet the Bakers</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://placehold.co/200x200/d4a373/ffffff?text=Chef+Maria" alt="Head Baker">
+                <h3>Maria Santos</h3>
+                <div class="role">Head Baker & Founder</div>
+                <p>"Baking is not just work, it's my way of sharing love."</p>
+            </div>
+            <div class="team-member">
+                <img src="https://placehold.co/200x200/e56b6f/ffffff?text=John+Doe" alt="Pastry Chef">
+                <h3>John Doe</h3>
+                <div class="role">Lead Pastry Chef</div>
+                <p>Specialist in French techniques and delicate sugars.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://placehold.co/200x200/4a3b32/ffffff?text=Sarah+Lee" alt="Manager">
+                <h3>Sarah Lee</h3>
+                <div class="role">Shop Manager</div>
+                <p>Ensuring every customer leaves with a smile.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">What Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                "The best sourdough I've had outside of San Francisco! The crust is perfectly crunchy."
+                <span class="customer-name">- Emily R.</span>
+            </div>
+            <div class="testimonial-card">
+                "Ordered a custom cake for my daughter's birthday. It was not only beautiful but delicious!"
+                <span class="customer-name">- Michael T.</span>
+            </div>
+            <div class="testimonial-card">
+                "My morning routine isn't complete without their almond croissant and a latte. Highly recommended."
+                <span class="customer-name">- Jessica P.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Location -->
+    <section id="location">
+        <h2 class="section-title">Visit Us</h2>
+        <div class="location-container">
+            <div class="address-box">
+                <h3>📍 Main Branch</h3>
+                <p><strong>Address:</strong> 123 Baker Street, Sweet Town, ST 90210</p>
+                <p><strong>Hours:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Mon - Fri: 7:00 AM - 8:00 PM</li>
+                    <li>Sat - Sun: 8:00 AM - 9:00 PM</li>
+                </ul>
+                <p style="margin-top: 20px;"><strong>Phone:</strong> (555) 123-4567</p>
+            </div>
+            <div class="map-placeholder">
+                <!-- Using a placeholder image to simulate a map -->
+                <img src="https://placehold.co/600x400/cccccc/666666?text=Map+View:+123+Baker+St" alt="Map Location">
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Contact Us -->
+    <section id="contact" style="background-color: var(--secondary-color);">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message or Order Inquiry</label>
+                    <textarea id="message" name="message" rows="5" placeholder="I'd like to order a cake..." required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Sweet Crumb Bake Shop. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">Designed with ❤️ and Flour.</p>
+    </footer>
+
+</body>
+</html>
